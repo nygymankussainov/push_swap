@@ -1,0 +1,13 @@
+**.swp
+**.o
+**.a
+**.DS_Store
+**.idea
+**.dSYM
+.vscode
+main.c
+**.gch
+a.out
+push_swap
+checker
+pft/
