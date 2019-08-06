@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   rev_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/05 13:18:05 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/05 19:40:36 by vhazelnu         ###   ########.fr       */
+/*   Created: 2019/08/06 15:20:05 by vhazelnu          #+#    #+#             */
+/*   Updated: 2019/08/06 15:27:13 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		main(int argc, char **argv)
+void	rra(int **a)
 {
-	// char	**str;
-	int		i;
+	int	i;
+	int	j;
 
-	if (argc > 1)
+	i = 0;
+	while ((*a)[i])
+		i++;
+	j = 0;
+	while (j < --i)
 	{
-		i = get_args(++argv);
-			
-		// while (*str)
-		// {
-		// 	ft_printf("%s\n", *str);
-		// 	str++;
-		// }
-		// return (0);
-		// if (!validation(str))
-		// {
-		// 	ft_free_two_dim_arr(str);
-		// 	return (0);
-		// }
-		// ft_free_two_dim_arr(str);
+		ft_swap(&(*a)[i - 1], &(*a)[i]);
 	}
-	return (0);
+}
+
+void	rrb(int **b)
+{
+	rra(b);
+}
+
+void	rrr(int **a, int **b)
+{
+	rra(a);
+	rrb(b);
 }

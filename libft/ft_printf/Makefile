@@ -6,7 +6,7 @@
 #    By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/16 11:34:51 by vhazelnu          #+#    #+#              #
-#    Updated: 2019/08/05 13:35:23 by vhazelnu         ###   ########.fr        #
+#    Updated: 2019/08/06 13:32:41 by vhazelnu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ $(NAME): $(OBJS)
 	@ranlib $(NAME)
 
 %.o: %.c $(INCLUDES)
-	gcc $(CCFL) -c $(SRCS) $(LIB)
+	@gcc $(CCFL) -c $(SRCS) $(LIB)
 
 clean:
 	@make clean -C ../

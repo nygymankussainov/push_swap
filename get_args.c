@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_two_dim_arr.c                               :+:      :+:    :+:   */
+/*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 19:25:42 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/05 21:19:47 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/06 13:12:33 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		create_twodim_arr(char *str, char ***result)
 {
 	int		i;
 	char	**tmp;
-	
+
 	i = 0;
 	tmp = ft_strsplit(str, ' ', '\t');
 	while (tmp[i])
@@ -77,18 +77,7 @@ char	**add_str_in_twodim_arr(char *str, char ***old, int len)
 	return (new);
 }
 
-int		isonly_whitesp(char *str)
-{
-	while (*str)
-	{
-		if (ft_isascii(*str) && *str != ' ' && *str != '\t')
-			return (1);
-		str++;
-	}
-	return (0);
-}
-
-int		get_args(char **str)
+char	**get_args(char **str)
 {
 	int		i;
 	int		j;
@@ -103,47 +92,13 @@ int		get_args(char **str)
 		{
 			if (result)
 				ft_free_two_dim_arr(result);
-			return (validation(NULL));
+			return (NULL);
 		}
-		if (ft_istabspace_in_str(str[i]))
-		{
-			if (result)
-				result = add_str_in_twodim_arr(str[i], &result, j++);
-			else
-				if (!(j = create_twodim_arr(str[i], &result)))
-					break ;
-		}
-		else
-		{
-			if (result)
-				result = add_str_in_twodim_arr(str[i], &result, j++);
-			else
-				if (!(j = create_twodim_arr(str[i], &result)))
-					break ;
-
-		}
+		if (result)
+			result = add_str_in_twodim_arr(str[i], &result, j++);
+		else if (!(j = create_twodim_arr(str[i], &result)))
+			break ;
 		i++;
 	}
-	int d;
-	d = 0;
-	if (!validation(result))
-	{
-		if (j)
-		{
-			while (result[d])
-			{
-				ft_printf("%s\n", result[d]);
-				d++;
-			}
-			ft_free_two_dim_arr(result);
-		}
-		return (0);
-	}
-	while (result[d])
-	{
-		ft_printf("%s\n", result[d]);
-		d++;
-	}
-	ft_free_two_dim_arr(result);
-	return (1);
+	return (result);
 }
