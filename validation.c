@@ -6,21 +6,26 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 19:26:41 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/06 13:21:13 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/06 19:39:54 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		isonly_whitesp(char *str)
+int		issorted(int *stack)
 {
-	while (*str)
+	int		i;
+	int		j;
+
+	i = 0;
+	while (stack[i])
 	{
-		if (ft_isascii(*str) && *str != ' ' && *str != '\t')
-			return (1);
-		str++;
+		j = i + 1;
+		if (stack[j] && stack[i] > stack[j])
+			return (0);
+		i++;
 	}
-	return (0);
+	return (1);
 }
 
 int		isint_limit(char *str, int sign)

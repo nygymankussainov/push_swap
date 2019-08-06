@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ssp.c                                              :+:      :+:    :+:   */
+/*   ft_intarrlen.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 14:10:32 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/06 17:11:30 by vhazelnu         ###   ########.fr       */
+/*   Created: 2019/08/06 17:12:28 by vhazelnu          #+#    #+#             */
+/*   Updated: 2019/08/06 17:13:11 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	sa(int **a)
+int		ft_intarrlen(int *a)
 {
-	ft_swap(&(*a)[0], &(*a)[1]);
-}
+	int	i;
 
-void	sb(int **b)
-{
-	sa(b);
-}
-
-void	ss(int **a, int **b)
-{
-	sa(a);
-	sb(b);
+	i = 0;
+	while (a[i])
+		i++;
+	return (i);
 }

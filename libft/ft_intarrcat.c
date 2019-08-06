@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ssp.c                                              :+:      :+:    :+:   */
+/*   ft_intarrcat.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 14:10:32 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/06 17:11:30 by vhazelnu         ###   ########.fr       */
+/*   Created: 2019/08/06 21:54:14 by vhazelnu          #+#    #+#             */
+/*   Updated: 2019/08/06 22:19:24 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	sa(int **a)
+int		*ft_intarrcat(int **a, int **b)
 {
-	ft_swap(&(*a)[0], &(*a)[1]);
-}
+	int		*stack;
+	int		len;
+	int		i;
+	int		j;
 
-void	sb(int **b)
-{
-	sa(b);
-}
-
-void	ss(int **a, int **b)
-{
-	sa(a);
-	sb(b);
+	len = ft_intarrlen(*a) + ft_intarrlen(*b);
+	if (!(stack = (int *)ft_memalloc(sizeof(int) * (len + 1))))
+		return (0);
+	stack[len] = '\0';
+	i = 0;
+	while ((*a)[i])
+	{
+		stack[i] = (*a)[i];
+		i++;
+	}
+	j = 0;
+	while ((*b)[j])
+	{
+		stack[i] = (*b)[j];
+		i++;
+		j++;
+	}
+	free(*a);
+	free(*b);
+	return (stack);
 }

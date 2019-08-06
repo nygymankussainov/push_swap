@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ssp.c                                              :+:      :+:    :+:   */
+/*   print_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 14:10:32 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/06 17:11:30 by vhazelnu         ###   ########.fr       */
+/*   Created: 2019/08/06 19:32:07 by vhazelnu          #+#    #+#             */
+/*   Updated: 2019/08/06 19:32:50 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(int **a)
+void	print_stack(int *a)
 {
-	ft_swap(&(*a)[0], &(*a)[1]);
-}
+	int	i;
 
-void	sb(int **b)
-{
-	sa(b);
-}
-
-void	ss(int **a, int **b)
-{
-	sa(a);
-	sb(b);
+	i = 0;
+	while (a[i])
+	{
+		ft_printf("%d\n", a[i]);
+		i++;
+	}
 }

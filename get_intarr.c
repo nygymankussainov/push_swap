@@ -1,29 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ssp.c                                              :+:      :+:    :+:   */
+/*   get_intarr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 14:10:32 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/06 17:11:30 by vhazelnu         ###   ########.fr       */
+/*   Created: 2019/08/06 19:38:35 by vhazelnu          #+#    #+#             */
+/*   Updated: 2019/08/06 19:39:10 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(int **a)
+int		isonly_whitesp(char *str)
 {
-	ft_swap(&(*a)[0], &(*a)[1]);
+	while (*str)
+	{
+		if (ft_isascii(*str) && *str != ' ' && *str != '\t')
+			return (1);
+		str++;
+	}
+	return (0);
 }
 
-void	sb(int **b)
+int		*get_intarr(char **str)
 {
-	sa(b);
-}
+	int		i;
+	int		*stack;
 
-void	ss(int **a, int **b)
-{
-	sa(a);
-	sb(b);
+	i = 0;
+	while (str[i])
+		i++;
+	if (!(stack = (int *)ft_memalloc(sizeof(int) * (i + 1))))
+		return (0);
+	stack[i] = '\0';
+	i = 0;
+	while (str[i])
+	{
+		stack[i] = ft_atoi(str[i]);
+		i++;
+	}
+	return (stack);
 }
