@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 19:26:58 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/06 22:08:54 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/08 18:32:29 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	rr(int **a, int **b);
 void	rra(int **a);
 void	rrb(int **b);
 void	rrr(int **a, int **b);
-void	shit_sort(int **a, int **b, int len);
+int		*shit_sort(int **a, int **b, int len);
 int		divide_stack(int **a, int **b);
 
 

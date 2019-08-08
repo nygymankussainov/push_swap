@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:04 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/06 22:20:19 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/08 18:29:45 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int		main(int argc, char **argv)
 {
-	int		len;
 	int		*a;
-	int		*b;
+	// int		*b;
 	char	**str;
 
 	if (argc > 1)
@@ -30,8 +29,6 @@ int		main(int argc, char **argv)
 		}
 		a = get_intarr(str);
 		ft_free_two_dim_arr(str);
-		len = divide_stack(&a, &b);
-		// while (b != NULL)
-			shit_sort(&a, &b, len);
+		// a = shit_sort(&a, &b);
 	}
 }
