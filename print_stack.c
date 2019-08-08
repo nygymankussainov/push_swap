@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 19:32:07 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/08 21:34:28 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/08 22:19:31 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	print_stack(int *a)
 	int	i;
 
 	i = 0;
-	while (a[i])
+	while (a[i] != '\0')
 	{
 		ft_printf("%d\n", a[i]);
 		i++;

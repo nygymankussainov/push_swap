@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 19:38:35 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/08 21:52:04 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/08 22:36:56 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,31 @@ int		find_index(int *tmp, int i)
 	return (0);
 }
 
+int		ifnokey(char ***str, int *min, int **tmp)
+{
+	int	key;
+	int	i;
+
+	key = 0;
+	while (ft_atoi((*str)[key]) != *min)
+		key++;
+	i = key + 1;
+	while ((*tmp)[i] && (*tmp)[i] != -1)
+		i++;
+	(*tmp)[key] = key + 1;
+	if ((*str)[i])
+		*min = ft_atoi((*str)[i]);
+	else
+	{
+		i = 0;
+		while ((*tmp)[i] && (*tmp)[i] != -1)
+			i++;
+		if ((*str)[i])
+			*min = ft_atoi((*str)[i]);
+	}
+	return (key);
+}
+
 int		arr_indexation(char ***str, int *min, int min_i, int **tmp)
 {
 	int		mintmp;
@@ -51,7 +76,12 @@ int		arr_indexation(char ***str, int *min, int min_i, int **tmp)
 		if (!find_index(*tmp, i + 1) && ft_atoi((*str)[i]) < mintmp)
 		{
 			if (key == 1)
-				(*tmp)[i - 1] = -1;
+			{
+				key = 0;
+				while (ft_atoi((*str)[key]) != mintmp)
+					key++;
+				(*tmp)[key] = -1;
+			}
 			key = 1;
 			(*tmp)[i] = i + 1;
 			min_i = i;
@@ -60,25 +90,7 @@ int		arr_indexation(char ***str, int *min, int min_i, int **tmp)
 		i++;
 	}
 	if (!key)
-	{
-		while (ft_atoi((*str)[key]) != *min)
-			key++;
-		i = key + 1;
-		while ((*tmp)[i] && (*tmp)[i] != -1)
-			i++;
-		(*tmp)[key] = key + 1;
-		if ((*str)[i])
-			*min = ft_atoi((*str)[i]);
-		else
-		{
-			i = 0;
-			while ((*tmp)[i] && (*tmp)[i] != -1)
-				i++;
-			if ((*str)[i])
-				*min = ft_atoi((*str)[i]);
-		}
-		return (key);
-	}
+		return (ifnokey(str, min, tmp));
 	return (min_i);
 }
 
@@ -144,6 +156,8 @@ int		*get_intarr(char **str)
 			break ;
 		i++;
 	}
+	free(tmp);
+	tmp = NULL;
 	print_stack(stack);
 	return (stack);
 }
