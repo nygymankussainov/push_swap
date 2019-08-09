@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 19:38:35 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/08 22:36:56 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/09 12:59:40 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,75 +23,18 @@ int		isonly_whitesp(char *str)
 	return (0);
 }
 
-int		find_index(int *tmp, int i)
+int		istmpfull(int *tmp)
 {
-	int		j;
-
-	j = 0;
-	while (tmp[j])
-	{
-		if (tmp[j] == i)
-			return (1);
-		j++;
-	}
-	return (0);
-}
-
-int		ifnokey(char ***str, int *min, int **tmp)
-{
-	int	key;
 	int	i;
 
-	key = 0;
-	while (ft_atoi((*str)[key]) != *min)
-		key++;
-	i = key + 1;
-	while ((*tmp)[i] && (*tmp)[i] != -1)
-		i++;
-	(*tmp)[key] = key + 1;
-	if ((*str)[i])
-		*min = ft_atoi((*str)[i]);
-	else
-	{
-		i = 0;
-		while ((*tmp)[i] && (*tmp)[i] != -1)
-			i++;
-		if ((*str)[i])
-			*min = ft_atoi((*str)[i]);
-	}
-	return (key);
-}
-
-int		arr_indexation(char ***str, int *min, int min_i, int **tmp)
-{
-	int		mintmp;
-	int		i;
-	int		key;
-
 	i = 0;
-	key = 0;
-	mintmp = *min;
-	while ((*str)[i])
+	while (tmp[i])
 	{
-		if (!find_index(*tmp, i + 1) && ft_atoi((*str)[i]) < mintmp)
-		{
-			if (key == 1)
-			{
-				key = 0;
-				while (ft_atoi((*str)[key]) != mintmp)
-					key++;
-				(*tmp)[key] = -1;
-			}
-			key = 1;
-			(*tmp)[i] = i + 1;
-			min_i = i;
-			mintmp = ft_atoi((*str)[i]);
-		}
+		if (tmp[i] == -1)
+			return (0);
 		i++;
 	}
-	if (!key)
-		return (ifnokey(str, min, tmp));
-	return (min_i);
+	return (1);
 }
 
 int		find_min(char **str, int i)
@@ -112,18 +55,20 @@ int		find_min(char **str, int i)
 	return (min);
 }
 
-int		istmpfull(int *tmp)
+int		get_min_value(char **str, int **stack, int **tmp, int i)
 {
-	int	i;
+	int	min;
 
-	i = 0;
-	while (tmp[i])
-	{
-		if (tmp[i] == -1)
-			return (0);
-		i++;
-	}
-	return (1);
+	if (!(*stack = (int *)ft_memalloc(sizeof(int) * (i + 1))))
+		return (0);
+	if (!(*tmp = (int *)malloc(sizeof(int) * (i + 1))))
+		return (0);
+	(*stack)[i] = '\0';
+	(*tmp)[i] = '\0';
+	min = find_min(str, i - 1);
+	while (--i >= 0)
+		(*tmp)[i] = -1;
+	return (min);
 }
 
 int		*get_intarr(char **str)
@@ -137,15 +82,7 @@ int		*get_intarr(char **str)
 	i = 0;
 	while (str[i])
 		i++;
-	if (!(stack = (int *)ft_memalloc(sizeof(int) * (i + 1))))
-		return (0);
-	if (!(tmp = (int *)malloc(sizeof(int) * (i + 1))))
-		return (0);
-	stack[i] = '\0';
-	tmp[i] = '\0';
-	min = find_min(str, i - 1);
-	while (--i >= 0)
-		tmp[i] = -1;
+	min = get_min_value(str, &stack, &tmp, i);
 	i = 0;
 	min_i = 0;
 	while (str[i])
@@ -158,6 +95,5 @@ int		*get_intarr(char **str)
 	}
 	free(tmp);
 	tmp = NULL;
-	print_stack(stack);
 	return (stack);
 }

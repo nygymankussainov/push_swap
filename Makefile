@@ -6,7 +6,7 @@
 #    By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/16 11:34:51 by vhazelnu          #+#    #+#              #
-#    Updated: 2019/08/06 22:29:25 by vhazelnu         ###   ########.fr        #
+#    Updated: 2019/08/09 17:06:39 by vhazelnu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIB = -L libft/ -lft
 INCLUDES = -I ./includes -I libft/includes -I libft/ft_printf/includes
 
 SRCS1 = get_args.c validation.c rev_rotate.c rotate.c ssp.c papb.c libft/ft_free_two_dim_arr.c push_swap.c print_stack.c get_intarr.c shit_sort.c \
-		divide_stack.c \
+		divide_stack.c arr_indexation.c find_best_case.c \
 		libft/ft_isascii.c libft/ft_istabspace_in_str.c libft/ft_intarrcat.c \
 		libft/ft_memalloc.c libft/ft_printf/ft_printf.c libft/ft_skip_whitesp.c libft/ft_strcmp.c libft/ft_strdup.c libft/ft_strsplit.c \
 		libft/ft_printf/ft_symbol.c libft/ft_printf/ft_number.c libft/ft_printf/ft_conv_f.c libft/ft_printf/ft_conv_x.c libft/ft_printf/ft_conv_d.c \
@@ -32,7 +32,7 @@ SRCS1 = get_args.c validation.c rev_rotate.c rotate.c ssp.c papb.c libft/ft_free
 		libft/ft_islower.c libft/ft_isupper.c libft/ft_memdel.c libft/ft_strcat.c libft/get_next_line.c libft/ft_strsub.c
 
 SRCS2 = get_args.c checker.c validation.c rev_rotate.c rotate.c ssp.c papb.c libft/ft_free_two_dim_arr.c print_stack.c get_intarr.c shit_sort.c \
-		divide_stack.c \
+		divide_stack.c arr_indexation.c find_best_case.c \
 		libft/ft_isascii.c libft/ft_istabspace_in_str.c libft/ft_intarrcat.c \
 		libft/ft_memalloc.c libft/ft_printf/ft_printf.c libft/ft_skip_whitesp.c libft/ft_strcmp.c libft/ft_strdup.c libft/ft_strsplit.c \
 		libft/ft_printf/ft_symbol.c libft/ft_printf/ft_number.c libft/ft_printf/ft_conv_f.c libft/ft_printf/ft_conv_x.c libft/ft_printf/ft_conv_d.c \

@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:04 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/08 18:29:45 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/09 22:18:27 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		main(int argc, char **argv)
 {
 	int		*a;
-	// int		*b;
+	int		*b;
 	char	**str;
 
 	if (argc > 1)
@@ -28,7 +28,13 @@ int		main(int argc, char **argv)
 			return (0);
 		}
 		a = get_intarr(str);
+		// print_stack(a);
+		// ft_printf("\n");
 		ft_free_two_dim_arr(str);
-		// a = shit_sort(&a, &b);
+		// if (!(b = (int *)ft_memalloc(sizeof(int) * (0))))
+		// 	return (0);
+		shit_sort(&a, &b);
+		free(a);
+		a = NULL;
 	}
 }

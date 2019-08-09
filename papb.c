@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:10:46 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/06 19:16:35 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/09 21:09:31 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,13 @@ int		*pa(int **a, int **b)
 	int	j;
 
 	i = 0;
-	if (*b)
+	if (**b)
 	{
-		while ((*a)[i])
-			i++;
+		if (*a)
+		{
+			while ((*a)[i])
+				i++;
+		}
 		if (!(res = (int *)ft_memalloc(sizeof(int) * (++i + 1))))
 			return (0);
 		res[i] = '\0';
