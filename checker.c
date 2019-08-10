@@ -6,16 +6,15 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 13:18:05 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/09 23:04:49 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/10 17:38:35 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		user_sort(int **a, int **b)
+int		user_sort(t_stack **a, t_stack **b)
 {
 	char *line;
-	// int fd = open("data.txt", O_RDONLY);
 	
 	while (get_next_line(0, &line) == 1)
 	{
@@ -26,9 +25,9 @@ int		user_sort(int **a, int **b)
 		else if (!ft_strcmp("ss", line))
 			ss(a, b);
 		else if (!ft_strcmp("pa", line))
-			*a = pa(a, b);
+			pa(a, b);
 		else if (!ft_strcmp("pb", line))
-			*b = pb(a, b);
+			pb(a, b);
 		else if (!ft_strcmp("ra", line))
 			ra(a);
 		else if (!ft_strcmp("rb", line))
@@ -55,9 +54,8 @@ int		user_sort(int **a, int **b)
 
 int		main(int argc, char **argv)
 {
-	// int		i;
-	int		*a;
-	int		*b;
+	t_stack		*a;
+	t_stack		*b;
 	char	**str;
 
 	if (argc > 1)
@@ -71,42 +69,21 @@ int		main(int argc, char **argv)
 		}
 		a = get_intarr(str);
 		ft_free_two_dim_arr(str);
-		// i = ft_intarrlen(a);
-		// if (!(b = (int *)ft_memalloc(sizeof(int) * (i + 1))))
-		// 	return (0);
-		// b[0] = 4;
-		// b[1] = 5;
-		// b[2] = 6;
-		// b[i] = '\0';
+		if (!(b = (t_stack *)ft_memalloc(sizeof(t_stack))))
+			return (0);
 		if (!user_sort(&a, &b))
 		{
 			ft_printf("Error\n");
-			free(b);
-			b = NULL;
+			free(a->arr);
 			free(a);
 			a = NULL;
 			return (0);
 		}
-		print_stack(a);
-		// i = 0;
-		// while (a[i])
-		// {
-		// 	ft_printf("%d\n", a[i]);
-		// 	i++;
-		// }
-		// i = 0;
-		// ft_printf("\n");
-		// while (b[i])
-		// {
-		// 	ft_printf("%d\n", b[i]);
-		// 	i++;
-		// }
-		free(b);
-		b = NULL;
 		if (issorted(a))
 			ft_printf("OK\n");
 		else
 			ft_printf("KO\n");
+		free(a->arr);
 		free(a);
 		a = NULL;
 	}

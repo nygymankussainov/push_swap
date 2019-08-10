@@ -6,33 +6,31 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 15:20:05 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/06 15:27:13 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/10 17:25:39 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(int **a)
+void	rra(t_stack **a)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	while ((*a)[i])
-		i++;
 	j = 0;
+	i = (*a)->size;
 	while (j < --i)
 	{
-		ft_swap(&(*a)[i - 1], &(*a)[i]);
+		ft_swap(&(*a)->arr[i - 1], &(*a)->arr[i]);
 	}
 }
 
-void	rrb(int **b)
+void	rrb(t_stack **b)
 {
 	rra(b);
 }
 
-void	rrr(int **a, int **b)
+void	rrr(t_stack **a, t_stack **b)
 {
 	rra(a);
 	rrb(b);

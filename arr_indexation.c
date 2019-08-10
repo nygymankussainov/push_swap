@@ -6,27 +6,27 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 12:58:07 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/09 12:59:30 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/10 14:35:05 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		find_index(int *tmp, int i)
+int		find_index(t_stack *tmp, int i)
 {
 	int		j;
 
 	j = 0;
-	while (tmp[j])
+	while (j < tmp->size)
 	{
-		if (tmp[j] == i)
+		if (tmp->arr[j] == i)
 			return (1);
 		j++;
 	}
 	return (0);
 }
 
-int		ifnokey(char ***str, int *min, int **tmp)
+int		ifnokey(char ***str, int *min, t_stack **tmp)
 {
 	int	key;
 	int	i;
@@ -35,15 +35,15 @@ int		ifnokey(char ***str, int *min, int **tmp)
 	while (ft_atoi((*str)[key]) != *min)
 		key++;
 	i = key + 1;
-	while ((*tmp)[i] && (*tmp)[i] != -1)
+	while (i < (*tmp)->size && (*tmp)->arr[i] != -1)
 		i++;
-	(*tmp)[key] = key + 1;
+	(*tmp)->arr[key] = key + 1;
 	if ((*str)[i])
 		*min = ft_atoi((*str)[i]);
 	else
 	{
 		i = 0;
-		while ((*tmp)[i] && (*tmp)[i] != -1)
+		while (i < (*tmp)->size && (*tmp)->arr[i] != -1)
 			i++;
 		if ((*str)[i])
 			*min = ft_atoi((*str)[i]);
@@ -51,17 +51,17 @@ int		ifnokey(char ***str, int *min, int **tmp)
 	return (key);
 }
 
-void	ifkey(char ***str, int **tmp, int mintmp)
+void	ifkey(char ***str, t_stack **tmp, int mintmp)
 {
 	int	key;
 
 	key = 0;
 	while (ft_atoi((*str)[key]) != mintmp)
 		key++;
-	(*tmp)[key] = -1;
+	(*tmp)->arr[key] = -1;
 }
 
-int		arr_indexation(char ***str, int *min, int min_i, int **tmp)
+int		arr_indexation(char ***str, int *min, int min_i, t_stack **tmp)
 {
 	int		mintmp;
 	int		i;
@@ -77,7 +77,7 @@ int		arr_indexation(char ***str, int *min, int min_i, int **tmp)
 			if (key == 1)
 				ifkey(str, tmp, mintmp);
 			key = 1;
-			(*tmp)[i] = i + 1;
+			(*tmp)->arr[i] = i + 1;
 			min_i = i;
 			mintmp = ft_atoi((*str)[i]);
 		}

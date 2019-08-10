@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 19:38:35 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/09 12:59:40 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/10 14:39:26 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ int		isonly_whitesp(char *str)
 	return (0);
 }
 
-int		istmpfull(int *tmp)
+int		istmpfull(t_stack *tmp)
 {
 	int	i;
 
 	i = 0;
-	while (tmp[i])
+	while (i < tmp->size)
 	{
-		if (tmp[i] == -1)
+		if (tmp->arr[i] == -1)
 			return (0);
 		i++;
 	}
@@ -55,29 +55,35 @@ int		find_min(char **str, int i)
 	return (min);
 }
 
-int		get_min_value(char **str, int **stack, int **tmp, int i)
+int		get_min_value(char **str, t_stack **stack, t_stack **tmp, int i)
 {
 	int	min;
 
-	if (!(*stack = (int *)ft_memalloc(sizeof(int) * (i + 1))))
+	if (!(*stack = (t_stack *)ft_memalloc(sizeof(t_stack))))
 		return (0);
-	if (!(*tmp = (int *)malloc(sizeof(int) * (i + 1))))
+	(*stack)->size = i;
+	(*stack)->last = (*stack)->size - 1;
+	if (!(*tmp = (t_stack *)ft_memalloc(sizeof(t_stack))))
 		return (0);
-	(*stack)[i] = '\0';
-	(*tmp)[i] = '\0';
+	(*tmp)->size = i;
+	(*tmp)->last = (*tmp)->size - 1;
+	if (!((*stack)->arr = (int *)ft_memalloc(sizeof(int) * i)))
+		return (0);
+	if (!((*tmp)->arr = (int *)malloc(sizeof(int) * i)))
+		return (0);
 	min = find_min(str, i - 1);
 	while (--i >= 0)
-		(*tmp)[i] = -1;
+		(*tmp)->arr[i] = -1;
 	return (min);
 }
 
-int		*get_intarr(char **str)
+t_stack	*get_intarr(char **str)
 {
-	int		i;
-	int		min_i;
-	int		min;
-	int		*tmp;
-	int		*stack;
+	int			i;
+	int			min_i;
+	int			min;
+	t_stack		*tmp;
+	t_stack		*stack;
 
 	i = 0;
 	while (str[i])
@@ -88,11 +94,12 @@ int		*get_intarr(char **str)
 	while (str[i])
 	{
 		min_i = arr_indexation(&str, &min, min_i, &tmp);
-		stack[min_i] = i + 1;
+		stack->arr[min_i] = i + 1;
 		if (istmpfull(tmp))
 			break ;
 		i++;
 	}
+	free(tmp->arr);
 	free(tmp);
 	tmp = NULL;
 	return (stack);

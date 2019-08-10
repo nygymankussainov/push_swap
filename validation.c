@@ -6,22 +6,22 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 19:26:41 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/06 19:39:54 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/10 17:36:29 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		issorted(int *stack)
+int		issorted(t_stack *stack)
 {
 	int		i;
 	int		j;
 
 	i = 0;
-	while (stack[i])
+	while (i < stack->size)
 	{
 		j = i + 1;
-		if (stack[j] && stack[i] > stack[j])
+		if (j < stack->size && stack->arr[i] > stack->arr[j])
 			return (0);
 		i++;
 	}
@@ -61,7 +61,7 @@ int		isint(char *str)
 	i = str[i] == '-' || str[i] == '+' ? 1 : 0;
 	sign = (i == 1 && str[0] == '+') || !i ? 1 : -1;
 	str += sign && str[1] && i ? 1 : 0;
-	if (!str[i])
+	if (!str[0])
 		return (0);
 	if (str[0] == '0' && str[1])
 		while (*str == '0' && *str)

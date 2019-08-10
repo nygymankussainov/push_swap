@@ -6,20 +6,20 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 19:32:07 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/08 22:19:31 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/10 14:18:29 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(int *a)
+void	print_stack(t_stack *a)
 {
 	int	i;
 
 	i = 0;
-	while (a[i] != '\0')
+	while (i < a->size)
 	{
-		ft_printf("%d\n", a[i]);
+		ft_printf("%d\n", a->arr[i]);
 		i++;
 	}
 }

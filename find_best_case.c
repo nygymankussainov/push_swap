@@ -6,13 +6,13 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 17:06:01 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/09 21:58:45 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/10 17:39:58 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		find_closest(int *a, int *b, int i)
+int		find_closest(t_stack *a, t_stack *b, int i)
 {
 	int closest;
 	int	j;
@@ -22,11 +22,9 @@ int		find_closest(int *a, int *b, int i)
 	j = 0;
 	closest = 0;
 	diff = 2147483647;
-	while (a[j])
+	while (j < a->size)
 	{
-		// ft_printf("a[j]: %d\n", a[j]);
-		// ft_printf("b[i]: %d\n", b[i]);
-		tmp = a[j] - b[i];
+		tmp = a->arr[j] - b->arr[i];
 		if (tmp < diff && tmp > 0)
 		{
 			diff = tmp;
@@ -37,7 +35,7 @@ int		find_closest(int *a, int *b, int i)
 	return (closest);
 }
 
-int		count_instr(int *a, int *b, int i)
+int		count_instr(t_stack *a, t_stack *b, int i)
 {
 	int closest;
 	int	len_a;
@@ -45,8 +43,8 @@ int		count_instr(int *a, int *b, int i)
 	int	instr;
 
 	closest = find_closest(a, b, i);
-	len_a = ft_intarrlen(a);
-	len_b = ft_intarrlen(b);
+	len_a = a->size;
+	len_b = b->size;
 	instr = 0;
 	if (i == 0)
 		instr = 0;
@@ -61,7 +59,7 @@ int		count_instr(int *a, int *b, int i)
 	return (++instr);
 }
 
-int		find_best_case(int *a, int *b)
+int		find_best_case(t_stack *a, t_stack *b)
 {
 	int i;
 	int	instr;
@@ -70,9 +68,8 @@ int		find_best_case(int *a, int *b)
 
 	i = 0;
 	min = 2147483647;
-	while (b[i])
+	while (i < b->size)
 	{
-		// ft_printf("b[i]: %d\n", b[i]);
 		instr = count_instr(a, b, i);
 		if (instr < min)
 		{
