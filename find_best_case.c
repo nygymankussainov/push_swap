@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 17:06:01 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/10 17:39:58 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/10 19:00:18 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ int		count_instr(t_stack *a, t_stack *b, int i)
 	instr = 0;
 	if (i == 0)
 		instr = 0;
-	else if (i > len_b / 2)
+	else if (i >= len_b / 2)
 		instr = len_b - i;
 	else if (i < len_b / 2)
 		instr = i;
-	if (closest + 1 > len_a / 2)
+	if (closest > len_a / 2)
 		instr += len_a - closest;
-	else if (closest + 1 < len_a / 2)
+	else
 		instr += closest;
 	return (++instr);
 }

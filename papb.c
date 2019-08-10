@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:10:46 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/10 16:33:36 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/10 18:48:59 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void		pa(t_stack **a, t_stack **b)
 		if (!(*a = (t_stack *)ft_memalloc(sizeof(t_stack))))
 			return ;
 		(*a)->size = 1;
-		(*a)->last = 1;
+		(*a)->last = 0;
 	}
 	if (!((*a)->arr = (int *)malloc(sizeof(int) * (*a)->size)))
 		return ;

@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 20:00:29 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/10 17:39:39 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/10 19:00:29 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	do_instructions(t_stack **a, t_stack **b, int i)
 			}
 		}
 	}
-	if (closest + 1 > len_a / 2)
+	if (closest > len_a / 2)
 	{
 		instr = len_a - closest;
 		while (instr--)
@@ -134,6 +134,9 @@ void	shit_sort(t_stack **a, t_stack **b)
 	int	i;
 
 	only_two_a(a, b);
+	// print_stack(*a);
+	// ft_printf("\n");
+	// print_stack(*b);
 	while (*b)
 	{
 		i = find_best_case(*a, *b);
