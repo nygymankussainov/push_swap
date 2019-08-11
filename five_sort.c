@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_rotate.c                                       :+:      :+:    :+:   */
+/*   five_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 15:20:05 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/11 14:38:50 by vhazelnu         ###   ########.fr       */
+/*   Created: 2019/08/11 14:54:15 by vhazelnu          #+#    #+#             */
+/*   Updated: 2019/08/11 15:51:07 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(t_stack **a)
+void	five_sort(t_stack **a, t_stack **b)
 {
-	int	i;
-	int	j;
-
-	j = 0;
-	i = (*a)->size;
-	while (j < --i)
-		ft_swap(&(*a)->arr[i - 1], &(*a)->arr[i]);
-}
-
-void	rrb(t_stack **b)
-{
-	rra(b);
-}
-
-void	rrr(t_stack **a, t_stack **b)
-{
-	rra(a);
-	rrb(b);
+	find_lowest_top(a);
+	if (issorted(*a))
+	{
+		free(*b);
+		*b = NULL;
+		return ;
+	}
+	pb(a, b);
+	ft_printf("pb\n");
+	find_lowest_top(a);
+	pb(a, b);
+	ft_printf("pb\n");
+	three_sort(a);
+	if ((*b)->arr[0] < (*b)->arr[1])
+	{
+		sb(b);
+		ft_printf("sb\n");
+	}
+	pa(a, b);
+	ft_printf("pa\n");
+	pa(a, b);
+	ft_printf("pa\n");
 }

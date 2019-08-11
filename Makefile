@@ -6,7 +6,7 @@
 #    By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/16 11:34:51 by vhazelnu          #+#    #+#              #
-#    Updated: 2019/08/11 14:08:11 by vhazelnu         ###   ########.fr        #
+#    Updated: 2019/08/11 15:31:14 by vhazelnu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIB_A = libft/libft.a $(LIB)/libftprintf.a
 INCLUDES = -I ./includes -I libft/includes -I $(LIB)/includes
 
 SRC_PS = get_args.c validation.c rev_rotate.c rotate.c ssp.c papb.c push_swap.c get_intarr.c shit_sort.c \
-		divide_stack.c arr_indexation.c find_best_case.c \
+		divide_stack.c arr_indexation.c find_best_case.c three_sort.c five_sort.c \
 
 SRC_CH = get_args.c checker.c validation.c rev_rotate.c rotate.c ssp.c papb.c get_intarr.c arr_indexation.c find_best_case.c \
 

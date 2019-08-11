@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 19:26:58 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/11 14:11:57 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/11 15:23:04 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,8 @@ void			divide_stack(t_stack **a, t_stack **b);
 int				arr_indexation(char ***str, int *min, int min_i, t_stack **tmp);
 int				find_best_case(t_stack *a, t_stack *b);
 int				find_closest(t_stack *a, t_stack *b, int i);
+void			three_sort(t_stack **a);
+void			five_sort(t_stack **a, t_stack **b);
+void			find_lowest_top(t_stack **a);
 
 #endif

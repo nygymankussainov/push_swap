@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 20:00:29 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/11 13:57:59 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/11 15:43:46 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int		find_min_index(t_stack *a)
 
 	min = a->arr[0];
 	i = 0;
+	min_i = 0;
 	while (i < a->size)
 	{
 		if (a->arr[i] < min)
@@ -38,6 +39,7 @@ void	find_lowest_top(t_stack **a)
 	int	i;
 
 	min_i = find_min_index(*a);
+	i = 0;
 	if (min_i > (*a)->size / 2)
 	{
 		i = (*a)->size - min_i;
