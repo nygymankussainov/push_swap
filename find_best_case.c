@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 17:06:01 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/10 19:00:18 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/11 18:16:52 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,18 @@ int		find_closest(t_stack *a, t_stack *b, int i)
 int		count_instr(t_stack *a, t_stack *b, int i)
 {
 	int closest;
-	int	len_a;
-	int	len_b;
 	int	instr;
 
 	closest = find_closest(a, b, i);
-	len_a = a->size;
-	len_b = b->size;
 	instr = 0;
 	if (i == 0)
 		instr = 0;
-	else if (i >= len_b / 2)
-		instr = len_b - i;
-	else if (i < len_b / 2)
+	else if (i >= b->size / 2)
+		instr = b->size - i;
+	else if (i < b->size / 2)
 		instr = i;
-	if (closest > len_a / 2)
-		instr += len_a - closest;
+	if (closest > a->size / 2)
+		instr += a->size - closest;
 	else
 		instr += closest;
 	return (++instr);
