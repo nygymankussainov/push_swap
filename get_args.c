@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 19:25:42 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/06 13:12:33 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/11 12:43:23 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,7 @@ char	**add_str_in_twodim_arr(char *str, char ***old, int len)
 	new = tmp ? fill_twodim_arr(new, tmp, len, len + j) : new;
 	new[len] = !tmp ? ft_strdup(str) : new[len];
 	if (tmp)
-	{
 		ft_free_two_dim_arr(tmp);
-	}
 	ft_free_two_dim_arr(*old);
 	return (new);
 }

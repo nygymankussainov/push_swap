@@ -6,64 +6,63 @@
 #    By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/16 11:34:51 by vhazelnu          #+#    #+#              #
-#    Updated: 2019/08/09 17:06:39 by vhazelnu         ###   ########.fr        #
+#    Updated: 2019/08/11 14:08:11 by vhazelnu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME1 = push_swap
-NAME2 = checker
+ARCHIVE_PS = push_swap.a
+ARCHIVE_CH = checker.a
 
-LIB = -L libft/ -lft
+PUSH_SWAP = push_swap
+CHECKER = checker
 
-INCLUDES = -I ./includes -I libft/includes -I libft/ft_printf/includes
+LIB = libft/ft_printf
+LIB_A = libft/libft.a $(LIB)/libftprintf.a
 
-SRCS1 = get_args.c validation.c rev_rotate.c rotate.c ssp.c papb.c libft/ft_free_two_dim_arr.c push_swap.c print_stack.c get_intarr.c shit_sort.c \
+INCLUDES = -I ./includes -I libft/includes -I $(LIB)/includes
+
+SRC_PS = get_args.c validation.c rev_rotate.c rotate.c ssp.c papb.c push_swap.c get_intarr.c shit_sort.c \
 		divide_stack.c arr_indexation.c find_best_case.c \
-		libft/ft_isascii.c libft/ft_istabspace_in_str.c libft/ft_intarrcat.c \
-		libft/ft_memalloc.c libft/ft_printf/ft_printf.c libft/ft_skip_whitesp.c libft/ft_strcmp.c libft/ft_strdup.c libft/ft_strsplit.c \
-		libft/ft_printf/ft_symbol.c libft/ft_printf/ft_number.c libft/ft_printf/ft_conv_f.c libft/ft_printf/ft_conv_x.c libft/ft_printf/ft_conv_d.c \
-		libft/ft_printf/ft_conv_p.c libft/ft_printf/ft_conv_o.c libft/ft_printf/ft_conv_u.c libft/ft_printf/width_for_f.c libft/ft_printf/ft_conv_b.c \
-		libft/ft_printf/longadd.c libft/ft_printf/longmulti.c libft/ft_printf/decimal_part.c libft/ft_printf/longdiv.c libft/ft_printf/integer_part.c \
-		libft/ft_printf/rounding_and_print.c libft/ft_printf/calculate_decimal.c libft/ft_printf/width.c libft/ft_printf/find_conv_or_whitesp.c \
-		libft/ft_atoi.c libft/ft_atoi_base.c libft/ft_bzero.c libft/ft_isalpha.c libft/ft_isdigit.c libft/ft_itoa_base.c libft/ft_intarrlen.c \
-		libft/ft_itoa_ll.c libft/ft_memcpy.c libft/ft_memset.c libft/ft_power.c libft/ft_putchar.c libft/ft_putstr.c libft/ft_realloc.c \
-		libft/ft_revstr.c libft/ft_strchr.c libft/ft_strcpy.c libft/ft_strjoin.c libft/ft_strlen.c libft/ft_strncpy.c \
-		libft/ft_strndup.c libft/ft_strnew.c libft/ft_swap.c libft/ft_swap_str.c libft/ft_uitoa_base.c libft/iswhitesp.c libft/ft_bzero_null.c \
-		libft/ft_islower.c libft/ft_isupper.c libft/ft_memdel.c libft/ft_strcat.c libft/get_next_line.c libft/ft_strsub.c
 
-SRCS2 = get_args.c checker.c validation.c rev_rotate.c rotate.c ssp.c papb.c libft/ft_free_two_dim_arr.c print_stack.c get_intarr.c shit_sort.c \
-		divide_stack.c arr_indexation.c find_best_case.c \
-		libft/ft_isascii.c libft/ft_istabspace_in_str.c libft/ft_intarrcat.c \
-		libft/ft_memalloc.c libft/ft_printf/ft_printf.c libft/ft_skip_whitesp.c libft/ft_strcmp.c libft/ft_strdup.c libft/ft_strsplit.c \
-		libft/ft_printf/ft_symbol.c libft/ft_printf/ft_number.c libft/ft_printf/ft_conv_f.c libft/ft_printf/ft_conv_x.c libft/ft_printf/ft_conv_d.c \
-		libft/ft_printf/ft_conv_p.c libft/ft_printf/ft_conv_o.c libft/ft_printf/ft_conv_u.c libft/ft_printf/width_for_f.c libft/ft_printf/ft_conv_b.c \
-		libft/ft_printf/longadd.c libft/ft_printf/longmulti.c libft/ft_printf/decimal_part.c libft/ft_printf/longdiv.c libft/ft_printf/integer_part.c \
-		libft/ft_printf/rounding_and_print.c libft/ft_printf/calculate_decimal.c libft/ft_printf/width.c libft/ft_printf/find_conv_or_whitesp.c \
-		libft/ft_atoi.c libft/ft_atoi_base.c libft/ft_bzero.c libft/ft_isalpha.c libft/ft_isdigit.c libft/ft_itoa_base.c libft/ft_intarrlen.c \
-		libft/ft_itoa_ll.c libft/ft_memcpy.c libft/ft_memset.c libft/ft_power.c libft/ft_putchar.c libft/ft_putstr.c libft/ft_realloc.c \
-		libft/ft_revstr.c libft/ft_strchr.c libft/ft_strcpy.c libft/ft_strjoin.c libft/ft_strlen.c libft/ft_strncpy.c \
-		libft/ft_strndup.c libft/ft_strnew.c libft/ft_swap.c libft/ft_swap_str.c libft/ft_uitoa_base.c libft/iswhitesp.c libft/ft_bzero_null.c \
-		libft/ft_islower.c libft/ft_isupper.c libft/ft_memdel.c libft/ft_strcat.c libft/get_next_line.c libft/ft_strsub.c
+SRC_CH = get_args.c checker.c validation.c rev_rotate.c rotate.c ssp.c papb.c get_intarr.c arr_indexation.c find_best_case.c \
+
+OBJ_CH = $(SRC_CH:.c=.o)
+OBJ_PS = $(SRC_PS:.c=.o)
 
 CCFL = -Wall -Wextra -Werror
 
 .PHONY: all clean fclean re
 
-all: $(NAME1) $(NAME2)
+all: $(ARCHIVE_PS) $(ARCHIVE_CH) $(PUSH_SWAP) $(CHECKER)
 
-$(NAME1): $(SRCS)
-	@make -C libft/ft_printf
-	@gcc $(CCFL) -o $(NAME1) $(SRCS1) -g
+$(ARCHIVE_PS): $(OBJ_PS)
+	@make -C $(LIB)
+	@ar rc $(ARCHIVE_PS) $(OBJ_PS)
+	@ranlib $(ARCHIVE_PS)
 
-$(NAME2): $(SRCS)
-	@gcc $(CCFL) -o $(NAME2) $(SRCS2) -g
+$(ARCHIVE_CH): $(OBJ_CH)
+	@ar rc $(ARCHIVE_CH) $(OBJ_CH)
+	@ranlib $(ARCHIVE_CH)
+	
+%.o: %.c $(INCLUDES)
+	@gcc $(CCFL) -c $<
+
+$(PUSH_SWAP): $(OBJ_PS)
+	@gcc $(CCFL) -o $(PUSH_SWAP) $(ARCHIVE_PS) $(LIB_A) -g
+
+$(CHECKER): $(OBJ_CH)
+	@gcc $(CCFL) -o $(CHECKER) $(ARCHIVE_CH) $(LIB_A) -g
 
 clean:
-	@make clean -C libft/ft_printf
-	@rm -f $(NAME1)
-	@rm -f $(NAME2)
+	@make clean -C $(LIB)
+	@rm -f $(ARCHIVE_PS)
+	@rm -f $(ARCHIVE_CH)
+	@rm -f $(PUSH_SWAP)
+	@rm -f $(CHECKER)
+	@rm -f $(OBJ_CH)
+	@rm -f $(OBJ_PS)
 
 fclean: clean
-	@make fclean -C libft/ft_printf
+	@make fclean -C $(LIB)
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:10:46 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/10 18:48:59 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/11 13:02:43 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,26 +66,34 @@ void		remove_top_elem(t_stack **c)
 	tmp = NULL;
 }
 
-void		pa(t_stack **a, t_stack **b)
+int			copy_or_new(t_stack **a, t_stack **tmp)
 {
-	t_stack	*tmp;
-	int		i;
 	int		isfree;
 
 	isfree = 0;
 	if ((*a)->size)
 	{
-		get_copy(a, &tmp);
+		get_copy(a, tmp);
 		isfree = 1;
 	}
 	else
 	{
 		free(*a);
 		if (!(*a = (t_stack *)ft_memalloc(sizeof(t_stack))))
-			return ;
+			return (0);
 		(*a)->size = 1;
 		(*a)->last = 0;
 	}
+	return (isfree);
+}
+
+void		pa(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp;
+	int		i;
+	int		isfree;
+
+	isfree = copy_or_new(a, &tmp);
 	if (!((*a)->arr = (int *)malloc(sizeof(int) * (*a)->size)))
 		return ;
 	(*a)->arr[0] = (*b)->arr[0];

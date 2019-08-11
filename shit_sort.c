@@ -6,34 +6,41 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 20:00:29 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/10 19:00:29 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/08/11 13:57:59 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	find_lowest_top(t_stack **a)
+int		find_min_index(t_stack *a)
 {
-	int	len;
 	int	min;
 	int	min_i;
 	int	i;
 
-	len = (*a)->size;
-	min = (*a)->arr[0];
+	min = a->arr[0];
 	i = 0;
-	while (i < (*a)->size)
+	while (i < a->size)
 	{
-		if ((*a)->arr[i] < min)
+		if (a->arr[i] < min)
 		{
-			min = (*a)->arr[i];
+			min = a->arr[i];
 			min_i = i;
 		}
 		i++;
 	}
-	if (min_i > len / 2)
+	return (min_i);
+}
+
+void	find_lowest_top(t_stack **a)
+{
+	int	min_i;
+	int	i;
+
+	min_i = find_min_index(*a);
+	if (min_i > (*a)->size / 2)
 	{
-		i = len - min_i;
+		i = (*a)->size - min_i;
 		while (i--)
 		{
 			ft_printf("rra\n");
@@ -50,47 +57,16 @@ void	find_lowest_top(t_stack **a)
 	}
 }
 
-void	only_two_a(t_stack **a, t_stack **b)
+void	instr_b(t_stack **b, int i)
 {
-	int	max;
-	int	i;
-
-	max = (*a)->size;
-	i = 0;
-	while (i < (*a)->size - 1)
-	{
-		if ((*a)->arr[0] < max)
-		{
-			pb(a, b);
-			ft_printf("pb\n");
-			i = 0;
-		}
-		else
-		{
-			ft_printf("ra\n");
-			ra(a);
-			i = 0;
-		}
-		i++;
-	}
-}
-
-void	do_instructions(t_stack **a, t_stack **b, int i)
-{
-	int closest;
-	int	len_a;
-	int	len_b;
 	int	instr;
 
-	closest = find_closest(*a, *b, i);
-	len_a = (*a)->size;
-	len_b = (*b)->size;
 	instr = 0;
 	if (i > 0)
 	{
-		if (i > len_b / 2)
+		if (i > (*b)->size / 2)
 		{
-			instr = len_b - i;
+			instr = (*b)->size - i;
 			while (instr--)
 			{
 				ft_printf("rrb\n");
@@ -107,9 +83,18 @@ void	do_instructions(t_stack **a, t_stack **b, int i)
 			}
 		}
 	}
-	if (closest > len_a / 2)
+}
+
+void	do_instructions(t_stack **a, t_stack **b, int i)
+{
+	int closest;
+	int	instr;
+
+	closest = find_closest(*a, *b, i);
+	instr_b(b, i);
+	if (closest > (*a)->size / 2)
 	{
-		instr = len_a - closest;
+		instr = (*a)->size - closest;
 		while (instr--)
 		{
 			ft_printf("rra\n");
@@ -133,10 +118,13 @@ void	shit_sort(t_stack **a, t_stack **b)
 {
 	int	i;
 
-	only_two_a(a, b);
-	// print_stack(*a);
-	// ft_printf("\n");
-	// print_stack(*b);
+	divide_stack(a, b);
+	if (issorted(*a) && !(*b)->arr)
+	{
+		free(*b);
+		*b = NULL;
+		return ;
+	}
 	while (*b)
 	{
 		i = find_best_case(*a, *b);
