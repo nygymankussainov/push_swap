@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_two_dim_arr.c                              :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/05 17:47:02 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/05 17:56:57 by vhazelnu         ###   ########.fr       */
+/*   Created: 2019/04/12 16:45:11 by vhazelnu          #+#    #+#             */
+/*   Updated: 2019/10/14 13:36:55 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_two_dim_arr(char **str)
+char	*ft_strnew(size_t size)
 {
-	int		i;
+	char	*s;
 
-	i = 0;
-	if (!str)
-		return ;
-	while (str[i])
-	{
-		free(str[i]);
-		str[i] = NULL;
-		i++;
-	}
-	free(str);
-	str = NULL;
+	if ((size + 1 == 0) || !(s = ft_memalloc(size + 1)))
+		return (NULL);
+	return (s);
 }

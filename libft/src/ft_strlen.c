@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 16:45:11 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/07/26 17:04:37 by vhazelnu         ###   ########.fr       */
+/*   Created: 2019/03/11 14:33:42 by vhazelnu          #+#    #+#             */
+/*   Updated: 2019/10/08 19:24:12 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+size_t	ft_strlen(const char *s)
 {
-	char	*s;
+	size_t i;
 
-	if ((size + 1 == 0) || !(s = ft_memalloc(size + 1)))
-		return (NULL);
-	return (s);
+	i = 0;
+	while (s && s[i])
+		i++;
+	return (i);
 }

@@ -6,12 +6,14 @@
 #    By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/16 11:34:51 by vhazelnu          #+#    #+#              #
-#    Updated: 2019/08/11 15:31:14 by vhazelnu         ###   ########.fr        #
+#    Updated: 2019/10/23 16:48:53 by vhazelnu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-ARCHIVE_PS = push_swap.a
-ARCHIVE_CH = checker.a
+LOG_NOCOLOR = \033[0m
+LOG_GREEN = \033[32m
+
+ARCHIVE = libftpushswap.a
 
 PUSH_SWAP = push_swap
 CHECKER = checker
@@ -19,50 +21,51 @@ CHECKER = checker
 LIB = libft/ft_printf
 LIB_A = libft/libft.a $(LIB)/libftprintf.a
 
+OBJDIR = obj
+
 INCLUDES = -I ./includes -I libft/includes -I $(LIB)/includes
 
-SRC_PS = get_args.c validation.c rev_rotate.c rotate.c ssp.c papb.c push_swap.c get_intarr.c shit_sort.c \
+SRCS = get_args.c validation.c rev_rotate.c rotate.c ssp.c papb.c get_intarr.c shit_sort.c \
 		divide_stack.c arr_indexation.c find_best_case.c three_sort.c five_sort.c \
+		get_args.c validation.c rev_rotate.c rotate.c ssp.c papb.c get_intarr.c arr_indexation.c find_best_case.c \
 
-SRC_CH = get_args.c checker.c validation.c rev_rotate.c rotate.c ssp.c papb.c get_intarr.c arr_indexation.c find_best_case.c \
-
-OBJ_CH = $(SRC_CH:.c=.o)
-OBJ_PS = $(SRC_PS:.c=.o)
+OBJ = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o)) \
+		$(OBJDIR)/push_swap.o $(OBJDIR)/checker.o
 
 CCFL = -Wall -Wextra -Werror
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re obj_dir library
 
-all: $(ARCHIVE_PS) $(ARCHIVE_CH) $(PUSH_SWAP) $(CHECKER)
+all: obj_dir library $(ARCHIVE) $(PUSH_SWAP) $(CHECKER)
 
-$(ARCHIVE_PS): $(OBJ_PS)
-	@make -C $(LIB)
-	@ar rc $(ARCHIVE_PS) $(OBJ_PS)
-	@ranlib $(ARCHIVE_PS)
+obj_dir:
+	@mkdir -p $(OBJDIR)
 
-$(ARCHIVE_CH): $(OBJ_CH)
-	@ar rc $(ARCHIVE_CH) $(OBJ_CH)
-	@ranlib $(ARCHIVE_CH)
+library:
+	@make -sC $(LIB)
+
+$(ARCHIVE): $(OBJ)
+	@ar rc $(ARCHIVE) $(OBJ)
+	@echo "$(LOG_GREEN)Push_swap has compiled successfully!$(LOG_NOCOLOR)"
+	@ranlib $(ARCHIVE)
 	
-%.o: %.c $(INCLUDES)
-	@gcc $(CCFL) -c $<
+$(OBJDIR)/%.o: %.c
+	@gcc $(CCFL) -o $@ -c $< $(INCLUDES)
 
-$(PUSH_SWAP): $(OBJ_PS)
-	@gcc $(CCFL) -o $(PUSH_SWAP) $(ARCHIVE_PS) $(LIB_A) -g
+$(PUSH_SWAP): $(OBJ)
+	@gcc $(CCFL) -o $(PUSH_SWAP) $(PUSH_SWAP).c $(ARCHIVE) $(LIB_A)
 
-$(CHECKER): $(OBJ_CH)
-	@gcc $(CCFL) -o $(CHECKER) $(ARCHIVE_CH) $(LIB_A) -g
+$(CHECKER): $(OBJ)
+	@gcc $(CCFL) -o $(CHECKER) $(CHECKER).c $(ARCHIVE) $(LIB_A)
 
 clean:
-	@make clean -C $(LIB)
-	@rm -f $(ARCHIVE_PS)
-	@rm -f $(ARCHIVE_CH)
-	@rm -f $(PUSH_SWAP)
-	@rm -f $(CHECKER)
-	@rm -f $(OBJ_CH)
-	@rm -f $(OBJ_PS)
+	@make clean -sC $(LIB)
+	@/bin/rm -rf $(OBJDIR)
 
 fclean: clean
-	@make fclean -C $(LIB)
+	@make fclean -sC $(LIB)
+	@/bin/rm -f $(ARCHIVE)
+	@/bin/rm -f $(PUSH_SWAP)
+	@/bin/rm -f $(CHECKER)
 
 re: fclean all

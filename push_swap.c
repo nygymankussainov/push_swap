@@ -6,13 +6,13 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:04 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/11 15:57:52 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/10/23 16:48:27 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(char **str, t_stack **a, t_stack **b)
+void	push_swap( t_stack **a, t_stack **b)
 {
 	if (issorted(*a))
 	{
@@ -58,6 +58,6 @@ int		main(int argc, char **argv)
 			i++;
 		a = get_intarr(str);
 		ft_free_two_dim_arr(str);
-		push_swap(str, &a, &b);
+		push_swap(&a, &b);
 	}
 }
