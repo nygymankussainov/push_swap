@@ -6,14 +6,14 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 19:26:58 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/11 15:23:04 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/11/11 16:02:05 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/ft_printf/ft_printf.h"
+# include "ft_printf.h"
 
 typedef struct	s_stack
 {
