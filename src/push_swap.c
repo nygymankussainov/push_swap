@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:53:04 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/10/23 16:48:27 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/11/12 14:38:24 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	push_swap( t_stack **a, t_stack **b)
 		if ((*a)->size == 5)
 			five_sort(a, b);
 		else
-			shit_sort(a, b);
+			sort_stack(a, b);
 	}
 	free((*a)->arr);
 	free(*a);
