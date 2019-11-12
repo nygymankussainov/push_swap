@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shit_sort.c                                        :+:      :+:    :+:   */
+/*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 20:00:29 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/08/11 15:43:46 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/11/12 14:36:43 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	do_instructions(t_stack **a, t_stack **b, int i)
 	ft_printf("pa\n");
 }
 
-void	shit_sort(t_stack **a, t_stack **b)
+void	sort_stack(t_stack **a, t_stack **b)
 {
 	int	i;
 

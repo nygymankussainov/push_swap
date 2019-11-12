@@ -6,7 +6,7 @@
 /*   By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 19:26:58 by vhazelnu          #+#    #+#             */
-/*   Updated: 2019/11/11 16:02:05 by vhazelnu         ###   ########.fr       */
+/*   Updated: 2019/11/12 14:37:04 by vhazelnu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void			rr(t_stack **a, t_stack **b);
 void			rra(t_stack **a);
 void			rrb(t_stack **b);
 void			rrr(t_stack **a, t_stack **b);
-void			shit_sort(t_stack **a, t_stack **b);
+void			sort_stack(t_stack **a, t_stack **b);
 void			divide_stack(t_stack **a, t_stack **b);
 int				arr_indexation(char ***str, int *min, int min_i, t_stack **tmp);
 int				find_best_case(t_stack *a, t_stack *b);

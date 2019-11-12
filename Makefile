@@ -6,7 +6,7 @@
 #    By: vhazelnu <vhazelnu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/16 11:34:51 by vhazelnu          #+#    #+#              #
-#    Updated: 2019/11/11 15:33:38 by vhazelnu         ###   ########.fr        #
+#    Updated: 2019/11/12 14:36:53 by vhazelnu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCDIR = src
 
 INCLUDES = -I ./ -I libft/ -I $(LIB)/
 
-SRC = get_args.c validation.c rev_rotate.c rotate.c ssp.c papb.c get_intarr.c shit_sort.c \
+SRC = get_args.c validation.c rev_rotate.c rotate.c ssp.c papb.c get_intarr.c sort_stack.c \
 		divide_stack.c arr_indexation.c find_best_case.c three_sort.c five_sort.c \
 		
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
