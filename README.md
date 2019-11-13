@@ -1,13 +1,13 @@
 # push_swap
 
-	The Push_swap project is a very simple and highly effective algorithm project: a stack
-	of int values have to be sorted using one extra empty stack and particular set of instructions.
+The Push_swap project is a very simple and highly effective algorithm project: a stack
+of int values have to be sorted using one extra empty stack and particular set of instructions.
 
 # Goal of the project
 
-	The goal of this project is to write two programs, one called push_swap, which sorts
-	a stack of int values and returns a set of instructions that it used to sort it, and checker, which
-	checks if a return value of push_swap is correct.
+The goal of this project is to write two programs, one called push_swap, which sorts
+a stack of int values and returns a set of instructions that it used to sort it, and checker, which
+checks if a return value of push_swap is correct.
 
 # Instructions
 
